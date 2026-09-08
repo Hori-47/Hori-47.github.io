@@ -1,3 +1,5 @@
-theme: jekyll-theme-minimal
-title: 邓旻的个人主页
-description: Personal page
+title: 邓旻 | Robotics & Embodied AI
+description: 邓旻的个人主页，记录具身智能、机器人操作与策略部署工作。
+url: "https://hori-47.github.io"
+theme: null
+markdown: kramdown

@@ -1,43 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>邓旻 | Personal Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="邓旻的个人主页，记录具身智能、机器人操作与策略部署工作。">
+  <title>邓旻 个人主页 | Robotics &amp; Embodied AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="avatar"><img src="assets/images/headimage.jpg" alt="邓旻头像"></div>
+        <h1>邓旻</h1>
+        <p class="role">东华大学 硕士<br><span>具身智能 · 机械臂操作 · 后训练与真机部署</span></p>
+      </div>
+      <nav class="side-nav" aria-label="页面导航">
+        <a class="active" href="#about">关于我 <span>01</span></a>
+        <a href="#work">研究与工程 <span>02</span></a>
+        <a href="#projects">项目地图 <span>03</span></a>
+        <a href="#assets">数据与模型 <span>04</span></a>
+        <a href="#demos">真机 Demo <span>05</span></a>
+        <a href="#contact">交流学习 <span>06</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="text-link" href="mailto:123298890@qq.com">123298890@qq.com <span>↗</span></a>
+        <div class="social-links"><a href="https://github.com/Hori-47" target="_blank" rel="noreferrer">GitHub</a><a href="#contact">CV / Resume</a></div>
+      </div>
+    </aside>
 
-    <h1>邓旻</h1>
+    <main class="content">
+      <section id="about" class="section-block about-section">
+        <div class="section-heading"><div><h2>关于我</h2></div></div>
+        <div class="about-tabs" role="tablist" aria-label="关于我页面切换"><button class="about-tab active" role="tab" aria-selected="true" aria-controls="education-panel" id="education-tab" tabindex="0">教育经历</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="research-panel" id="research-tab" tabindex="-1">研究方向</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="experience-panel" id="experience-tab" tabindex="-1">实习经历</button></div>
+        <div class="about-panel active" id="education-panel" role="tabpanel" aria-labelledby="education-tab"><table class="timeline-table"><thead><tr><th>时间</th><th>学校</th><th>专业</th><th>阶段</th></tr></thead><tbody><tr><td>2021.09 - 2025.06</td><td>东华大学</td><td>自动化</td><td>本科</td></tr><tr><td>2025.09 - 至今</td><td>东华大学</td><td>控制工程</td><td>硕士</td></tr></tbody></table></div>
+        <div class="about-panel" id="research-panel" role="tabpanel" aria-labelledby="research-tab" hidden><h3>让策略真正进入真实世界</h3><p class="body-copy">研究兴趣集中在具身智能与机器人操作，关注视觉语言动作模型、强化学习和实时推理系统如何协同工作，并通过数据采集、训练、部署和真机评估形成闭环。</p><div class="interest-pills"><span>VLA / PI0.5</span><span>EVO-RL</span><span>RTC / TensorRT</span></div></div>
+        <div class="about-panel" id="experience-panel" role="tabpanel" aria-labelledby="experience-tab" hidden><table class="timeline-table"><thead><tr><th>时间</th><th>单位</th><th>职位</th><th>主要工作</th></tr></thead><tbody><tr><td>2026.06 - 至今</td><td>索塔无界</td><td>具身智能算法实习生</td><td>围绕 LeRobot 与松灵 Piper-X 双臂平台完成机器人操作数据采集、PI0.5 / EVO-RL 强化学习的训练推理验证、RTC / TensorRT 推理工程化，以及叠毛巾、叠杯子、万物抓取以及传送带 Pick and Place 真机 Demo。</td></tr></tbody></table></div>
+      </section>
 
-    <p>
-        Personal Homepage
-    </p>
+      <section id="work" class="section-block project-section"><div class="section-heading"><div><h2>研究与工程</h2></div></div><div class="about-tabs project-tabs" role="tablist" aria-label="研究与工程项目切换"><button class="about-tab active" role="tab" aria-selected="true" aria-controls="trt-panel" id="trt-tab" tabindex="0">TensorRT 工程化</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="evorl-panel" id="evorl-tab" tabindex="-1">EVO-RL · HIL</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="faster-panel" id="faster-tab" tabindex="-1">FASTER 调度</button></div><div class="project-pages">
+        <article class="project-page active" id="trt-panel" role="tabpanel" aria-labelledby="trt-tab"><div class="project-page-copy"><h3>TensorRT 工程化</h3><p class="project-summary">将 PI0.5 checkpoint 推进为可复用的 TensorRT 推理链路，并连接 Piper-X 真机完成端到端验证。</p><h4>主要工作</h4><ul><li>实现 Prefix / Denoise engine 构建、manifest 和 I/O contract 校验。</li><li>提供 runtime smoke、parity 与 Piper no-publish / forward-only RTC 入口。</li><li>围绕资源占用、延迟和反馈稳定性进行部署调试。</li></ul><h4>相关原理</h4><p>把视觉编码与 flow-matching denoise 拆成可独立验证的 engine，通过固定 shape、dtype 和 action contract 降低模型部署的不确定性。</p><span class="tag verified">VALIDATED</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>TensorRT engine、Piper 运行画面待补充</small></div></article>
+        <article class="project-page" id="evorl-panel" role="tabpanel" aria-labelledby="evorl-tab" hidden><div class="project-page-copy"><h3>EVO-RL · HIL 数据闭环</h3><p class="project-summary">把真实机器人 rollout、value 学习、ACP 视图和可恢复实验状态组织成一套可追踪流程。</p><h4>主要工作</h4><ul><li>固定 14D action/state、三路 RGB、30 FPS 的 <code>piper_evorl_v1</code> 契约。</li><li>实现 no-publish HIL、feedback freshness、ACK、teleop takeover 和 round state machine。</li><li>为 episode、manifest、derived label 和失败注入保留 provenance。</li></ul><h4>相关原理</h4><p>通过人机协同和显式 outcome label 约束策略更新，把真机试验中的风险、反馈和数据质量转化为可复用的训练信号。</p><span class="tag verified">IMPLEMENTED</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>HIL 控制台、数据流或真机画面待补充</small></div></article>
+        <article class="project-page" id="faster-panel" role="tabpanel" aria-labelledby="faster-tab" hidden><div class="project-page-copy"><h3>FASTER · Horizon-Aware Scheduling</h3><p class="project-summary">面向流式 action chunk 和实时控制，补齐 Piper-X 服务端、客户端与非阻塞 refill worker。</p><h4>主要工作</h4><ul><li>实现 const / HAS schedule、同步 / 异步 / streaming 模式。</li><li>加入 threaded newline-delimited TCP、fake loopback 和 policy processor 映射。</li><li>用 scope、shape、protocol 与 safety tests 固化接口边界。</li></ul><h4>相关原理</h4><p>依据未来动作有效期动态安排推理和发送时刻，减少 action chunk 过期造成的停顿，同时将通信与策略计算解耦。</p><span class="tag verified">IMPLEMENTED</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>调度时序图、延迟曲线或服务端画面待补充</small></div></article>
+      </div></section>
 
-    <h2>About Me</h2>
+      <section id="projects" class="section-block project-section"><div class="section-heading"><div><h2>项目地图</h2></div></div><div class="about-tabs project-tabs" role="tablist" aria-label="项目地图切换"><button class="about-tab active" role="tab" aria-selected="true" aria-controls="rtc-panel" id="rtc-tab" tabindex="0">Training-Time RTC</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="memory-panel" id="memory-tab" tabindex="-1">PI05-Mem 迁移</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="vla-panel" id="vla-tab" tabindex="-1">VLA Piper 接入</button><button class="about-tab" role="tab" aria-selected="false" aria-controls="trajectory-panel" id="trajectory-tab" tabindex="-1">长时程与轨迹</button></div><div class="project-pages">
+        <article class="project-page active" id="rtc-panel" role="tabpanel" aria-labelledby="rtc-tab"><div class="project-page-copy"><h3>Training-Time RTC for PI0.5</h3><p class="project-summary">将随机延迟、clean prefix conditioning 和 future flow matching loss 引入训练阶段。</p><h4>主要工作</h4><ul><li>注册 <code>rtc_pi05</code> 策略并接入 train / eval / rollout。</li><li>按有效 future token 做 per-sample loss normalization。</li></ul><h4>相关原理</h4><p>训练时模拟推理延迟，让策略学习在已执行的 prefix 之后预测未来动作，从而提升流式控制下的连续性。</p><span class="tag verified">IMPLEMENTED</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>训练曲线或 RTC 时序图待补充</small></div></article>
+        <article class="project-page" id="memory-panel" role="tabpanel" aria-labelledby="memory-tab" hidden><div class="project-page-copy"><h3>OpenTau PI05-Mem 迁移</h3><p class="project-summary">把时序视觉、连续 state token、FAST 离散动作与 checkpoint 转换迁移到 LeRobot PiperX。</p><h4>主要工作</h4><ul><li>搭建四帧视频 history、action expert denoise 和 parity harness。</li><li>完成插件迁移主要阶段，保留 CUDA gate 和真机训练验证。</li></ul><h4>相关原理</h4><p>通过视觉历史和记忆状态补足单帧观测的不完整性，再用知识隔离降低不同动作专家之间的干扰。</p><span class="tag ongoing-tag">IN PROGRESS</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>时序输入、模型结构或 checkpoint 对齐结果待补充</small></div></article>
+        <article class="project-page" id="vla-panel" role="tabpanel" aria-labelledby="vla-tab" hidden><div class="project-page-copy"><h3>FlashVLA / PoseVLA Piper 接入</h3><p class="project-summary">为外部 VLA 模型建立三路图像、14D action 与 Piper processor 的适配和远程推理约束。</p><h4>主要工作</h4><ul><li>完成 schema mapping、processor 复用与 remote streaming inference。</li><li>以 no-publish rollout 验证接口，区分适配结果与真机发布结果。</li></ul><h4>相关原理</h4><p>通过统一 observation/action schema 和预处理流程，让不同策略骨干可以在同一机器人控制契约下比较。</p><span class="tag verified">ADAPTED</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>模型输入输出或远程推理画面待补充</small></div></article>
+        <article class="project-page" id="trajectory-panel" role="tabpanel" aria-labelledby="trajectory-tab" hidden><div class="project-page-copy"><h3>长时程操作与轨迹工具</h3><p class="project-summary">研究 Cortex、Flex-π、RPent、OpenPi 与 Ruckig，补充任务编排、服务化和轨迹平滑视角。</p><h4>主要工作</h4><ul><li>整理 System-2 / System-1、world-action、多流服务和 agent infra。</li><li>接入 jerk-limited trajectory filter，为双臂控制提供平滑基础。</li></ul><h4>相关原理</h4><p>将高层任务分解、策略服务和低层运动约束分层，使长时程任务更容易组合、调试与恢复。</p><span class="tag verified">RESEARCHED</span></div><div class="project-media"><span>IMAGE / VIDEO PLACEHOLDER</span><small>任务树、轨迹曲线或服务拓扑待补充</small></div></article>
+      </div></section>
 
-    <p>
-        I am interested in Robotics and Embodied AI.
-    </p>
+      <section id="assets" class="section-block asset-section"><div class="section-heading"><div><h2>实验基线与复现记录</h2></div></div><div class="baseline-copy"><p>这些数据集与 checkpoint 是实验所使用的外部或共享资产，主页不将其包装成个人所有成果。这里仅保留它们对工程工作的价值：用于定义输入输出契约、复现实验、比较延迟与验证真机链路。</p><div class="baseline-grid"><div><span>控制接口</span><strong>14D action/state<br>三路 RGB · 30 FPS</strong></div><div><span>覆盖任务</span><strong>抓取 · 传送 · 叠杯<br>叠毛巾 · 倒水</strong></div><div><span>记录方式</span><strong>实验配置<br>checkpoint / log / demo</strong></div></div><p class="small-note">数据集索引、模型链接和实验日志将在整理后补充。</p></div></section>
 
-    <h2>Research Interests</h2>
+      <section id="demos" class="section-block demos-section"><div class="section-heading"><div><h2>真机 Demo</h2></div></div><div class="demo-grid"><article class="demo-card"><div class="video-placeholder"><span>VIDEO PLACEHOLDER</span><small>叠毛巾演示视频待补充</small></div><div class="demo-body"><h3>叠毛巾</h3><p>策略、机械臂和真实物体交互的演示位置。</p></div></article><article class="demo-card"><div class="video-placeholder"><span>VIDEO PLACEHOLDER</span><small>叠杯子演示视频待补充</small></div><div class="demo-body"><h3>叠杯子</h3><p>多组 stack-cup 实验的真机视频位置。</p></div></article><article class="demo-card"><div class="video-placeholder"><span>VIDEO PLACEHOLDER</span><small>后续 Demo 标题与视频待补充</small></div><div class="demo-body"><h3>__________</h3><p>可继续添加任务名称、简短说明和视频。</p></div></article><article class="demo-card"><div class="video-placeholder"><span>VIDEO PLACEHOLDER</span><small>后续 Demo 标题与视频待补充</small></div><div class="demo-body"><h3>__________</h3><p>可继续添加任务名称、简短说明和视频。</p></div></article></div></section>
 
-    <ul>
-        <li>Embodied AI</li>
-        <li>Robot Manipulation</li>
-        <li>Vision-Language-Action Models</li>
-        <li>Reinforcement Learning</li>
-    </ul>
+      <section id="contact" class="contact section-block"><div><h2>一起把机器人<br><em>做得更可靠。</em></h2></div><div class="contact-copy"><p>欢迎交流机器人学习、策略部署和真实世界数据闭环。公开信息字段已预留，发布前可继续补充。</p><div class="contact-fields"><a href="mailto:123298890@qq.com"><span>EMAIL</span>123298890@qq.com ↗</a><a href="https://github.com/Hori-47" target="_blank" rel="noreferrer"><span>GITHUB</span>github.com/Hori-47 ↗</a><div class="pending-link"><span>CV / RESUME</span>链接待补充</div></div></div></section>
+      <footer><span>© 2026 邓旻</span><a href="#about">回到顶部 ↑</a></footer>
+    </main>
+  </div>
+  <script>
+    document.querySelectorAll('[role="tablist"]').forEach((tabList) => {
+      const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+      const activateTab = (tab) => {
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-selected', selected);
+          item.tabIndex = selected ? 0 : -1;
+          const panel = document.getElementById(item.getAttribute('aria-controls'));
+          panel.hidden = !selected;
+          panel.classList.toggle('active', selected);
+        });
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          const targetIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+          activateTab(tabs[targetIndex]);
+          tabs[targetIndex].focus();
+        });
+      });
+    });
 
-    <h2>Projects</h2>
-
-    <p>
-        My robotics and embodied intelligence projects.
-    </p>
-
+    const navLinks = [...document.querySelectorAll('.side-nav a')];
+    const sections = navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean);
+    const updateActiveNav = () => {
+      const marker = window.scrollY + Math.min(window.innerHeight * 0.35, 260);
+      let current = sections[0];
+      sections.forEach((section) => {
+        if (section.offsetTop <= marker) current = section;
+      });
+      navLinks.forEach((link) => {
+        const active = link.hash === `#${current.id}`;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    updateActiveNav();
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+  </script>
 </body>
-
 </html>
